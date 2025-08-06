@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Login Kode Akses</title>
+  <style>
+    body {
+      font-family: sans-serif;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+      background-color: #f3f3f3;
+    }
+    .container {
+      text-align: center;
+      padding: 30px;
+      background: white;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    }
+    #content {
+      display: none;
+      margin-top: 20px;
+      font-weight: bold;
+      color: green;
+    }
+    #error {
+      color: red;
+      margin-top: 10px;
+    }
+    input {
+      padding: 10px;
+      font-size: 16px;
+      width: 200px;
+    }
+    button {
+      padding: 10px 20px;
+      font-size: 16px;
+      margin-top: 10px;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h2>Masukkan Kode Akses</h2>
+    <input type="text" id="accessCode" placeholder="Ketik kode di sini" />
+    <br />
+    <button id="submitBtn">Masuk</button>
+    <p id="error"></p>
+    <div id="content">
+      <h3>Selamat datang di FatzzStore 🎉</h3>
+      <p>Anda akan diarahkan sebentar lagi...</p>
+    </div>
+  </div>
+
+  <script>
+    // Pastikan fungsi dijalankan saat DOM sudah siap
+    document.addEventListener("DOMContentLoaded", function () {
+      const button = document.getElementById("submitBtn");
+      const input = document.getElementById("accessCode");
+      const content = document.getElementById("content");
+      const error = document.getElementById("error");
+
+      button.addEventListener("click", function () {
+        const value = input.value.trim();
+        if (value === "fatzzstore") {
+          content.style.display = "block";
+          error.textContent = "";
+          setTimeout(() => {
+            window.location.href = "welcome.html";
+          }, 3000);
+        } else {
+          content.style.display = "none";
+          error.textContent = "Kode salah! Coba lagi.";
+        }
+      });
+    });
+  </script>
+</body>
+</html>
